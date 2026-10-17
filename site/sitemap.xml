@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/films</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/films</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/studio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/studio"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/studio"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/studio</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/studio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/studio"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/contact"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/contact</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/contact"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/films/saltglass</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/saltglass"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/saltglass"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/films/saltglass</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/saltglass"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/saltglass"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/films/ninefold</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/ninefold"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/ninefold"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/films/ninefold</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/ninefold"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/ninefold"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/films/cinder-pier</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/cinder-pier"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/cinder-pier"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/films/cinder-pier</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/cinder-pier"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/cinder-pier"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/en/films/marrow-house</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/marrow-house"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/marrow-house"/>
+  </url>
+  <url><loc>https://vaneholm-studio-site.vercel.app/he/films/marrow-house</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://vaneholm-studio-site.vercel.app/he/films/marrow-house"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vaneholm-studio-site.vercel.app/en/films/marrow-house"/>
+  </url>
+</urlset>

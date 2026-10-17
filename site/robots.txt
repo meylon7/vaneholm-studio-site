@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vaneholm-studio-site.vercel.app/sitemap.xml

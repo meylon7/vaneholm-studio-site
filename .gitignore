@@ -1,0 +1,5 @@
+tools/shots/
+node_modules/
+.vercel/
+.env*
+__pycache__/

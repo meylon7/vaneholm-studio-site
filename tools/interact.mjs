@@ -1,0 +1,54 @@
+// Interaction tests: menu, dialog, scrub, filter, form, copy, drag reel. usage: node tools/interact.mjs
+import { createRequire } from 'module'; import fs from 'fs'; import path from 'path';
+const require = createRequire(import.meta.url);
+const { chromium } = require(process.env.PW || '/opt/npm-tools/node_modules/playwright');
+const root = path.join(path.dirname(new URL(import.meta.url).pathname), '..'), SITE = path.join(root, 'site');
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'application/javascript', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg' };
+const resolve = p => [path.join(SITE, p), path.join(SITE, p + '.html'), path.join(SITE, p, 'index.html')].find(f => fs.existsSync(f) && fs.statSync(f).isFile());
+const b = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+async function ctx(mobile) {
+  const c = await b.newContext(mobile ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } : { viewport: { width: 1440, height: 900 } });
+  await c.route('https://site.test/**', r => { const f = resolve(decodeURIComponent(new URL(r.request().url()).pathname)); r.fulfill(f ? { contentType: types[path.extname(f)] || 'application/octet-stream', body: fs.readFileSync(f) } : { status: 404, body: '' }); });
+  return c;
+}
+const errs = []; let fails = 0;
+function ok(name, cond, extra = '') { if (!cond) fails++; console.log((cond ? 'PASS ' : 'FAIL ') + name, extra); }
+const d = await ctx(false);
+let pg = await d.newPage(); pg.on('pageerror', e => errs.push(e.message));
+await pg.goto('https://site.test/en/films/cinder-pier', { waitUntil: 'networkidle' }); await pg.waitForTimeout(600);
+const r = await pg.locator('#hero .ruler').boundingBox();
+await pg.locator('#hero .toggle').click();
+await pg.mouse.click(r.x + r.width * 0.65, r.y + r.height / 2); await pg.waitForTimeout(200);
+ok('scrub to SH04', (await pg.textContent('#hero .tc .shot')).startsWith('SH04'), await pg.textContent('#hero .tc .shot'));
+await pg.locator('.hero .open-film').click(); await pg.waitForTimeout(900);
+ok('dialog opens and plays', await pg.evaluate(() => document.getElementById('film-dlg').open) && (await pg.getAttribute('#film-dlg .toggle', 'aria-pressed')) === 'true');
+ok('dialog title', (await pg.textContent('#film-dlg .dlg-title')) === 'Cinder Pier');
+await pg.keyboard.press('Escape'); await pg.waitForTimeout(200);
+ok('dialog closes', !(await pg.evaluate(() => document.getElementById('film-dlg').open)));
+await pg.locator('.reel').scrollIntoViewIfNeeded(); await pg.waitForTimeout(400);
+const rb = await pg.locator('.reel').boundingBox();
+await pg.mouse.move(rb.x + rb.width * 0.7, rb.y + 60); await pg.mouse.down(); await pg.mouse.move(rb.x + rb.width * 0.2, rb.y + 60, { steps: 6 }); await pg.mouse.up();
+ok('reel drags', (await pg.evaluate(() => document.querySelector('.reel').scrollLeft)) > 100);
+await pg.close();
+pg = await d.newPage(); pg.on('pageerror', e => errs.push(e.message));
+await pg.goto('https://site.test/he/films', { waitUntil: 'networkidle' });
+await pg.click('.chips button[data-type="teaser"]');
+ok('filter teaser cards', (await pg.locator('.films-grid .card:visible').count()) === 1);
+ok('filter teaser archive', (await pg.locator('.archive tbody tr:visible').count()) === 2);
+await pg.close();
+pg = await d.newPage(); pg.on('pageerror', e => errs.push(e.message));
+await pg.goto('https://site.test/he/contact', { waitUntil: 'networkidle' });
+await pg.fill('#f-name', 'בדיקה'); await pg.click('.brief button[type=submit]');
+ok('concept form status', (await pg.textContent('.brief .status')).includes('אתר קונספט'));
+await pg.close();
+const m = await ctx(true);
+pg = await m.newPage(); pg.on('pageerror', e => errs.push(e.message));
+await pg.goto('https://site.test/en/', { waitUntil: 'networkidle' });
+await pg.click('.menu-btn');
+ok('mobile menu opens', await pg.isVisible('#menu'));
+await pg.click('#menu a[href="/en/studio"]'); await pg.waitForLoadState('networkidle');
+ok('menu navigates', pg.url().endsWith('/en/studio'));
+await pg.close();
+ok('no page errors', errs.length === 0, errs.join(' | '));
+await b.close();
+process.exit(fails ? 1 : 0);
